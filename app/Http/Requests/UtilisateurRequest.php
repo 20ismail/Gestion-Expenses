@@ -20,11 +20,22 @@ class UtilisateurRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
-        return [
-            'nom_complet' => 'required',
-            'email'=>'required',
-            'password' =>'required |confirmed',
-        ];
+
+{
+
+    // Add email validation rule conditionally for registration
+    if ($this->isMethod('post') && $this->route()->getName() == 'utilisateurs.store') {
+        $rules['nom_complet'] = 'required|min:3';
+        $rules['email'] = 'required|email|unique:utilisateurs,email';
+        $rules['password'] = 'required|min:8|confirmed';
+    } else {
+        // Validation for sign-in form
+        $rules['email'] = 'required|email';
+        $rules['password'] = 'required';
+
     }
+
+    return $rules;
+}
+
 }

@@ -27,5 +27,5 @@ class Utilisateur extends Model implements Authenticatable
     }
 }
 
-    
+
 

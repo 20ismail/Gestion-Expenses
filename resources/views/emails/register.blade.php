@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+
     <p>
         Bonjour  {{$name}},
 
@@ -20,7 +20,7 @@ Veuillez cliquer sur le lien ci-dessous pour confirmer votre adresse e-mail :
 Si vous n'avez pas demandé cette inscription, veuillez ignorer cet e-mail.
 
 Cordialement,
-L'équipe ismail 
+L'équipe ismail mohamed
     </p>
     <a href="{{ $lien }}">confirmation</a>
 </body>

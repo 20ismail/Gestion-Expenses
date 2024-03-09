@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+
     <div class="alert alert-warning" role="alert">
         email deja verifier
       </div>

@@ -19,15 +19,19 @@ class UtilisateurController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     //afficher la form du register
     public function index()
     {
-        //
+        return view('Authentification.Register');
     }
+
+     //pour veriefier l'email dans mailtrap
     public function verifyEmail(String $data){
         [$date,$id]=explode('*',base64_decode($data));
-        
+
         $user=utilisateur::findOrFail($id);
-        
+
         if($user->created_at->toDateTimeString()!==$date){
             abort(403);
         }
@@ -37,10 +41,11 @@ class UtilisateurController extends Controller
         $user->fill([
             'email_verified_at'=>now()
         ])->save();
-        
+
 
         return view('welcome',compact('user'));
     }
+
     public function redirectToGoogle(){
         return Socialite::driver('google')->redirect();
     }
@@ -48,23 +53,23 @@ class UtilisateurController extends Controller
         try{
 
             $user=Socialite::driver('google')->user();
-            
+
              $finduser=Utilisateur::where('social_id',$user->id)->first();
-           
+
             if($finduser){
                 // Auth::login($finduser);
                 // dd(auth()->user()->email);
                 return redirect('/home');
-               
-                
+
+
             }else{
                 $user=utilisateur::create([
                     'nom_complet'=>$user->name,
                     'email'=>$user->email,
                     'social_id'=>$user->id,
                                     ]);
-                                    
-                
+
+
                 return view('welcome',compact('user'));
             }
         }catch(Exception $e){
@@ -91,9 +96,10 @@ class UtilisateurController extends Controller
         // dd($finduser['email_verified_at']);
         if(!$finduser){
             $utilisateur=utilisateur::create($user);
-            Mail::to('smailsmail@gmail.com')->send(new usermail($utilisateur));
+           // Mail::to('smailsmail@gmail.com')->send(new usermail($utilisateur));
+            Mail::to('mohamedelaassal42@gmail.com')->send(new usermail($utilisateur));
         }
-       
+
         return view('emails.verifieremail',compact('finduser'));
     }
 
@@ -102,7 +108,7 @@ class UtilisateurController extends Controller
      */
     public function show(utilisateur $utilisateur)
     {
-        //
+
     }
 
     /**

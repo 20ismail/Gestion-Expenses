@@ -13,7 +13,7 @@ use League\Config\ReadOnlyConfiguration;
 
 class usermail extends Mailable
 {
-    
+
     private $name;
     use Queueable, SerializesModels;
 
@@ -23,7 +23,7 @@ class usermail extends Mailable
     public function __construct(private readonly Utilisateur $user)
     {
         //
-        
+
     }
 
     /**

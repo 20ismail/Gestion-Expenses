@@ -30,10 +30,18 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    //smail
     'google' => [
         'client_id' => '607971865135-dos3rr25d0lv1fmp4t959lbcls215fq3.apps.googleusercontent.com',
         'client_secret' =>'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',
         'redirect' => 'http://127.0.0.1:8000/auth/client',
     ],
+    //mohamed
+
+  /*  'google' => [
+        'client_id' => '655126584829-vmmfruk7ttsfsvasliqf2mk470uecpaf.apps.googleusercontent.com',
+        'client_secret' =>'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',
+        'redirect' => 'http://127.0.0.1:8000/auth/google/SignIn',
+    ],*/
 
 ];
