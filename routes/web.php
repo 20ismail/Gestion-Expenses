@@ -33,7 +33,8 @@ Route::get('/dash', function () {
 Route::get('/home', function () {
     return view('dashbord.dashbord');
 });
-Route::get('/SignUp', [UtilisateurController::class, 'index'])->name('SignUp.index');
+
+Route::get('/', [UtilisateurController::class, 'index'])->name('SignUp.index');
 Route::post('/SignUp', [UtilisateurController::class, 'store'])->name('SignUp.register');
 
 Route::get('/SignIn', [SignInController::class, 'show'])->name('SignIn.show');

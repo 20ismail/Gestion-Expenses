@@ -26,7 +26,7 @@ class UtilisateurRequest extends FormRequest
     // Add email validation rule conditionally for registration
     if ($this->isMethod('post') && $this->route()->getName() == 'utilisateurs.store') {
         $rules['nom_complet'] = 'required|min:3';
-        $rules['email'] = 'required|email|unique:utilisateurs,email';
+        $rules['email'] = 'required|email|unique:utilisateurs';
         $rules['password'] = 'required|min:8|confirmed';
     } else {
         // Validation for sign-in form
